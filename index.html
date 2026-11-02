@@ -279,40 +279,78 @@ a.fld:hover { border-color: var(--accent); }
 
 /* screenshot gallery */
 dialog.gallery {
-  width: min(1120px, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 24px);
+  width: min(1180px, calc(100vw - 24px));
+  height: min(900px, calc(100vh - 24px));
+  height: min(900px, calc(100dvh - 24px));
+  max-width: none; max-height: none;
   padding: 0; border: 1px solid var(--line); border-radius: 8px;
   background: var(--paper); color: var(--ink); overflow: hidden;
   box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
 }
 dialog.gallery[open] { display: flex; flex-direction: column; }
-dialog.gallery::backdrop { background: rgba(8, 12, 18, .75); }
+dialog.gallery::backdrop { background: rgba(8, 12, 18, .8); }
+html.g-lock, html.g-lock body { overflow: hidden; }
 .g-head {
-  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  flex: none; display: flex; justify-content: space-between; align-items: center; gap: 12px;
   padding: 10px 14px; background: var(--ink); color: var(--bg);
   font-family: var(--font-mono); font-size: 13px;
 }
+.g-head #g-title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.g-head #g-count { flex: none; white-space: nowrap; }
 .g-close {
-  font: 500 13px var(--font-body); color: var(--bg); background: transparent;
-  border: 1px solid color-mix(in srgb, var(--bg) 45%, transparent); border-radius: 3px; padding: 5px 12px; cursor: pointer;
+  flex: none; font: 600 14px var(--font-body); color: var(--bg); background: transparent;
+  border: 1px solid color-mix(in srgb, var(--bg) 45%, transparent); border-radius: 3px; padding: 7px 14px; cursor: pointer;
 }
-.g-stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: var(--neutral-bg); padding: 16px; height: min(66vh, 680px); }
-.g-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px; box-shadow: var(--shadow); }
-.g-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border-top: 1px solid var(--line); }
-.g-foot .btn { min-height: 38px; padding: 0 14px; }
+.g-stage {
+  flex: 1 1 auto; min-height: 0; overflow: auto; -webkit-overflow-scrolling: touch;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--neutral-bg); padding: 16px;
+}
+.g-stage img {
+  display: block; max-width: 100%; max-height: 100%; width: auto; height: auto;
+  object-fit: contain; border-radius: 4px; box-shadow: var(--shadow); cursor: zoom-in;
+}
+.g-stage.is-zoomed { display: block; padding: 8px; }
+.g-stage.is-zoomed img { max-width: none; max-height: none; cursor: zoom-out; }
+.g-foot { flex: none; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border-top: 1px solid var(--line); }
+.g-foot .btn { min-height: 42px; padding: 0 16px; }
 .g-cap { display: grid; gap: 2px; text-align: center; min-width: 0; }
 .g-cap strong { font-size: 16px; }
 .g-cap span { color: var(--muted); font-size: 14px; }
-.g-thumbs { display: flex; gap: 8px; padding: 0 14px 14px; overflow-x: auto; }
+.g-cap em { font-style: normal; font-size: 12px; color: var(--accent-ink); font-family: var(--font-mono); }
+.g-thumbs { flex: none; display: flex; gap: 8px; padding: 0 14px 14px; overflow-x: auto; }
 .g-thumbs button {
   flex: none; width: 72px; height: 52px; padding: 0; overflow: hidden; cursor: pointer;
   background: var(--neutral-bg); border: 2px solid var(--line); border-radius: 3px;
 }
 .g-thumbs button[aria-current="true"] { border-color: var(--accent); }
 .g-thumbs img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
-@media (max-width: 560px) {
-  .g-stage { height: 58vh; padding: 10px; }
-  .g-foot { grid-template-columns: 1fr 1fr; }
+@media (max-width: 700px) {
+  dialog.gallery {
+    width: 100vw; height: 100vh; height: 100dvh;
+    margin: 0; inset: 0; border: 0; border-radius: 0; box-shadow: none;
+  }
+  .g-head {
+    padding-top: calc(10px + env(safe-area-inset-top, 0px));
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+  }
+  .g-stage { padding: 6px; }
+  .g-stage img { border-radius: 2px; box-shadow: none; }
+  .g-foot {
+    grid-template-columns: 1fr 1fr; gap: 8px 10px; padding-block: 10px;
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+  }
   .g-cap { grid-column: 1 / -1; grid-row: 1; }
+  .g-cap span { font-size: 13px; }
+  .g-thumbs {
+    gap: 6px;
+    padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
+  }
+  .g-thumbs button { width: 52px; height: 40px; }
 }
 
 /* beyond SAP */
@@ -712,7 +750,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
         </div>
         <div class="c-row">
           <span class="bp-label">Based in</span>
-          <span class="c-val">Sharjah, UAE · UTC+4</span>
+          <span class="c-val">Dubai, UAE · UTC+4</span>
           <span></span>
         </div>
         <div class="c-actions">
@@ -735,7 +773,7 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   <div class="g-stage"><img id="g-img" alt=""></div>
   <div class="g-foot">
     <button class="btn btn--ghost" type="button" id="g-prev">Previous</button>
-    <div class="g-cap"><strong id="g-cap-title"></strong><span id="g-cap-text"></span></div>
+    <div class="g-cap"><strong id="g-cap-title"></strong><span id="g-cap-text"></span><em id="g-hint">Tap the image to zoom</em></div>
     <button class="btn btn--sap" type="button" id="g-next">Next</button>
   </div>
   <div class="g-thumbs" id="g-thumbs"></div>
@@ -788,7 +826,33 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
   var gImg = document.getElementById('g-img');
   var gThumbs = document.getElementById('g-thumbs');
   var current = null, idx = 0;
+  var gStage = document.querySelector('.g-stage');
+  function setZoom(on) {
+    gStage.classList.toggle('is-zoomed', on);
+    if (on) {
+      var wide = gImg.naturalWidth > gImg.naturalHeight;
+      gImg.style.width = wide ? Math.max(gStage.clientWidth * 2.4, 900) + 'px' : Math.max(gStage.clientWidth - 16, 300) + 'px';
+      gImg.style.height = 'auto';
+    } else {
+      gImg.style.width = ''; gImg.style.height = '';
+    }
+    gStage.scrollTop = 0; gStage.scrollLeft = 0;
+    document.getElementById('g-hint').textContent = on ? 'Tap again to fit the screen' : 'Tap the image to zoom';
+  }
+  gImg.addEventListener('click', function () { setZoom(!gStage.classList.contains('is-zoomed')); });
+  var touchX = null, touchY = null;
+  gStage.addEventListener('touchstart', function (e) {
+    if (gStage.classList.contains('is-zoomed') || e.touches.length !== 1) { touchX = null; return; }
+    touchX = e.touches[0].clientX; touchY = e.touches[0].clientY;
+  }, { passive: true });
+  gStage.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX, dy = e.changedTouches[0].clientY - touchY;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) show(dx < 0 ? idx + 1 : idx - 1);
+    touchX = null;
+  }, { passive: true });
   function show(i) {
+    setZoom(false);
     var shots = galleries[current].shots;
     idx = (i + shots.length) % shots.length;
     var s = shots[idx];
@@ -814,9 +878,11 @@ footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; g
       gThumbs.appendChild(b);
     });
     show(0);
+    document.documentElement.classList.add('g-lock');
     if (typeof dlg.showModal === 'function') { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
   }
-  function closeGallery() { if (dlg.close) { dlg.close(); } else { dlg.removeAttribute('open'); } }
+  function closeGallery() { document.documentElement.classList.remove('g-lock'); if (dlg.close) { dlg.close(); } else { dlg.removeAttribute('open'); } }
+  dlg.addEventListener('close', function () { document.documentElement.classList.remove('g-lock'); });
   document.querySelectorAll('[data-gallery]').forEach(function (el) {
     el.addEventListener('click', function () { openGallery(el.getAttribute('data-gallery')); });
   });
