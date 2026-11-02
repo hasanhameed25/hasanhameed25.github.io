@@ -1,0 +1,834 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Hasan Hameed, SAP Business One certified techno-functional consultant. Implementation, add-ons, integrations, apps and websites, delivered remotely.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Hasan Hameed Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: an SAP B1 document. A Business Partner window is the hero, the work log is a matrix with row numbers, and the golden link arrow marks anything that leads somewhere. */
+:root {
+  --bg: #EEF1F4;
+  --paper: #FFFFFF;
+  --ink: #132030;
+  --muted: #56657A;
+  --line: #D2D9E1;
+  --field: #F6F8FA;
+  --accent: #E6A10E;
+  --accent-ink: #8A5800;
+  --on-accent: #1B1404;
+  --ok: #17784F;
+  --ok-bg: #E3F3EB;
+  --wip: #2C5EA8;
+  --wip-bg: #E5EDF8;
+  --neutral-bg: #E8ECF1;
+  --shadow: 0 1px 2px rgba(19, 32, 48, .06), 0 12px 32px -12px rgba(19, 32, 48, .18);
+
+  --font-display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --font-body: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0C131B; --paper: #121B26; --ink: #E3E9F0; --muted: #94A2B3; --line: #243142; --field: #17212D;
+    --accent: #F0B234; --accent-ink: #F0B234; --on-accent: #1B1404;
+    --ok: #4CC38A; --ok-bg: #133024; --wip: #86AEEA; --wip-bg: #172A45; --neutral-bg: #1C2734;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -16px rgba(0,0,0,.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0C131B; --paper: #121B26; --ink: #E3E9F0; --muted: #94A2B3; --line: #243142; --field: #17212D;
+  --accent: #F0B234; --accent-ink: #F0B234; --on-accent: #1B1404;
+  --ok: #4CC38A; --ok-bg: #133024; --wip: #86AEEA; --wip-bg: #172A45; --neutral-bg: #1C2734;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 16px 40px -16px rgba(0,0,0,.6);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (min-width: 720px) {
+  .wrap {
+    padding-left: max(32px, env(safe-area-inset-left, 0px));
+    padding-right: max(32px, env(safe-area-inset-right, 0px));
+  }
+}
+.band { padding-block: clamp(56px, 8vw, 96px); }
+.band--paper { background: var(--paper); border-block: 1px solid var(--line); }
+
+/* type */
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; margin: 0; line-height: 1.05; }
+h2 { font-size: clamp(1.9rem, 3.6vw, 2.7rem); font-weight: 800; font-stretch: 112%; letter-spacing: -0.01em; }
+h3 { font-size: 1.2rem; font-weight: 700; font-stretch: 104%; line-height: 1.25; }
+p { margin: 0; }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent-ink);
+  font-weight: 500;
+}
+.lede { color: var(--muted); max-width: 62ch; font-size: 1.05rem; }
+.section-head { display: grid; gap: 14px; margin-bottom: clamp(32px, 5vw, 48px); max-width: 760px; }
+
+/* SAP B1 golden link arrow */
+.arrow {
+  display: inline-block;
+  width: 13px; height: 10px;
+  background: var(--accent);
+  clip-path: polygon(0 32%, 52% 32%, 52% 0, 100% 50%, 52% 100%, 52% 68%, 0 68%);
+  flex: none;
+  vertical-align: middle;
+}
+
+/* top bar */
+.topbar { padding-block: 18px; }
+.topbar .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.mono-mark {
+  width: 38px; height: 38px;
+  display: grid; place-items: center;
+  background: var(--ink); color: var(--bg);
+  font-family: var(--font-display); font-weight: 800; font-stretch: 120%;
+  font-size: 15px; border-radius: 4px;
+}
+.brand-name { font-family: var(--font-display); font-weight: 700; font-stretch: 108%; font-size: 1.05rem; line-height: 1.1; }
+.brand-sub { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: .04em; }
+.nav { display: flex; gap: 24px; align-items: center; font-size: 14px; }
+.nav a { text-decoration: none; color: var(--muted); }
+.nav a:hover { color: var(--ink); }
+.nav .nav-cta { color: var(--ink); font-weight: 600; display: inline-flex; gap: 8px; align-items: center; }
+@media (max-width: 760px) { .nav a:not(.nav-cta) { display: none; } }
+
+/* hero */
+.hero { padding-block: clamp(24px, 5vw, 64px) clamp(56px, 8vw, 96px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 5vw, 64px); align-items: center; }
+@media (max-width: 920px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } }
+.hero-copy { display: grid; gap: 24px; min-width: 0; }
+.hero h1 {
+  font-size: clamp(2.6rem, 6.4vw, 5rem);
+  font-weight: 850;
+  font-stretch: 118%;
+  letter-spacing: -0.02em;
+  line-height: .98;
+}
+.hero h1 em { font-style: normal; color: var(--accent-ink); }
+.hero .lede { font-size: 1.12rem; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 46px; padding: 0 20px;
+  font-family: var(--font-body); font-size: 15px; font-weight: 600;
+  text-decoration: none; border-radius: 3px; cursor: pointer;
+  border: 1px solid transparent; transition: transform .15s ease, background-color .15s ease;
+}
+.btn--sap { background: var(--accent); color: var(--on-accent); border-color: color-mix(in srgb, var(--accent) 70%, #000); }
+.btn--sap:hover { transform: translateY(-1px); }
+.btn--ghost { background: transparent; color: var(--ink); border-color: var(--line); }
+.btn--ghost:hover { background: var(--paper); }
+
+/* Business Partner window */
+.bp {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  min-width: 0;
+}
+.bp-title {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  background: var(--ink); color: var(--bg);
+  padding: 9px 14px;
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .02em;
+}
+.bp-title span:last-child { opacity: .7; }
+.bp-tabs { display: flex; gap: 2px; padding: 12px 14px 0; border-bottom: 1px solid var(--line); overflow-x: auto; }
+.bp-tab {
+  font-size: 12px; font-weight: 500; padding: 6px 12px; color: var(--muted);
+  border: 1px solid transparent; border-bottom: 0; border-radius: 3px 3px 0 0; white-space: nowrap;
+}
+.bp-tab.is-on { color: var(--ink); background: var(--paper); border-color: var(--line); margin-bottom: -1px; }
+.bp-body { display: grid; gap: 10px; padding: 18px 14px; }
+.bp-row { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px; align-items: center; }
+.bp-row label, .bp-label { font-size: 13px; color: var(--muted); }
+.fld {
+  display: flex; align-items: center; gap: 8px;
+  min-height: 34px; padding: 5px 10px;
+  background: var(--field); border: 1px solid var(--line); border-radius: 2px;
+  font-size: 14px; line-height: 1.35; min-width: 0;
+}
+a.fld { text-decoration: none; }
+a.fld:hover { border-color: var(--accent); }
+.fld .check { color: var(--ok); font-weight: 600; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ok); flex: none; box-shadow: 0 0 0 3px var(--ok-bg); }
+.bp-foot { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 14px 16px; border-top: 1px solid var(--line); background: var(--field); }
+.bp-foot .btn { min-height: 34px; padding: 0 16px; font-size: 13px; }
+@media (max-width: 420px) { .bp-row { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+
+/* services */
+.svc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px 32px; }
+@media (max-width: 900px) { .svc-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .svc-grid { grid-template-columns: minmax(0, 1fr); } }
+.svc { display: grid; gap: 10px; align-content: start; padding-top: 18px; border-top: 1px solid var(--line); }
+.svc p { color: var(--muted); font-size: 15px; }
+.svc code { font-family: var(--font-mono); font-size: 13px; color: var(--ink); background: var(--neutral-bg); padding: 1px 5px; border-radius: 2px; overflow-wrap: anywhere; }
+
+/* status pills */
+.pill {
+  display: inline-flex; align-items: center; gap: 6px; justify-self: start;
+  font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap;
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill--live { color: var(--ok); background: var(--ok-bg); }
+.pill--built { color: var(--ink); background: var(--neutral-bg); }
+.pill--wip { color: var(--wip); background: var(--wip-bg); }
+
+/* matrix */
+.matrix { border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: var(--paper); }
+.mx-row {
+  display: grid;
+  grid-template-columns: 44px 92px minmax(0, 1fr) 120px;
+  gap: 16px; align-items: start;
+  padding: 16px 18px; border-top: 1px solid var(--line);
+}
+.mx-row:first-child { border-top: 0; }
+.mx-head {
+  background: var(--field); padding-block: 10px;
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.mx-num { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.mx-row .obj { padding-top: 3px; }
+.mx-main { display: grid; gap: 4px; min-width: 0; }
+.mx-main strong { font-weight: 600; font-size: 16px; }
+.mx-main span { color: var(--muted); font-size: 15px; }
+.mx-row .pill { margin-top: 1px; }
+@media (max-width: 680px) {
+  .mx-head { display: none; }
+  .mx-row { grid-template-columns: 30px minmax(0, 1fr); gap: 6px 10px; }
+  .mx-row .obj { grid-column: 2; padding-top: 0; }
+  .mx-num { grid-row: 1; padding-top: 0; }
+  .mx-main, .mx-row .pill { grid-column: 2; }
+}
+
+/* add-ons */
+.feature {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  background: var(--paper); border: 1px solid var(--line); border-radius: 6px;
+  overflow: hidden; margin-bottom: 24px;
+}
+.feature--phone { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); }
+@media (max-width: 880px) { .feature, .feature--phone { grid-template-columns: minmax(0, 1fr); } }
+.feature-copy { padding: clamp(24px, 4vw, 40px); display: grid; gap: 18px; align-content: start; min-width: 0; }
+.feature-copy h3 { font-size: clamp(1.6rem, 2.8vw, 2.1rem); font-weight: 800; font-stretch: 112%; }
+.feature-copy .lede { font-size: 1rem; }
+.feature-copy .btn { justify-self: start; }
+.btn-count { font-weight: 400; opacity: .75; font-size: 13px; }
+.license-note {
+  display: grid; gap: 6px; padding: 16px 18px;
+  background: var(--field); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 3px;
+}
+.license-note strong { font-family: var(--font-display); font-weight: 700; font-stretch: 106%; font-size: 1.08rem; line-height: 1.3; }
+.license-note p { color: var(--muted); font-size: 15px; }
+.ticks { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
+.ticks li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 12px; }
+.ticks .arrow { margin-top: 7px; }
+.feature-media {
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  padding: clamp(20px, 3vw, 36px); min-width: 0;
+  background: var(--neutral-bg); border: 0; border-left: 1px solid var(--line);
+  cursor: zoom-in; font: inherit; color: inherit;
+}
+@media (max-width: 880px) { .feature-media { border-left: 0; border-top: 1px solid var(--line); } }
+.feature-media img { display: block; max-width: 100%; height: auto; border-radius: 4px; box-shadow: var(--shadow); transition: transform .2s ease; }
+.feature-media:hover img { transform: translateY(-2px); }
+.phones img { width: calc(50% - 8px); max-width: 230px; border-radius: 18px; }
+.more-head {
+  margin: 48px 0 16px; font-family: var(--font-mono); font-size: 12px;
+  letter-spacing: .08em; text-transform: uppercase; color: var(--muted);
+}
+.addon-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+@media (max-width: 900px) { .addon-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .addon-grid { grid-template-columns: minmax(0, 1fr); } }
+.addon { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; padding: 20px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.addon-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.addon h3 { font-size: 1.1rem; }
+.addon p { color: var(--muted); font-size: 15px; }
+
+/* screenshot gallery */
+dialog.gallery {
+  width: min(1120px, calc(100vw - 24px)); max-width: none; max-height: calc(100vh - 24px);
+  padding: 0; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--paper); color: var(--ink); overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, .45);
+}
+dialog.gallery[open] { display: flex; flex-direction: column; }
+dialog.gallery::backdrop { background: rgba(8, 12, 18, .75); }
+.g-head {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px;
+  padding: 10px 14px; background: var(--ink); color: var(--bg);
+  font-family: var(--font-mono); font-size: 13px;
+}
+.g-close {
+  font: 500 13px var(--font-body); color: var(--bg); background: transparent;
+  border: 1px solid color-mix(in srgb, var(--bg) 45%, transparent); border-radius: 3px; padding: 5px 12px; cursor: pointer;
+}
+.g-stage { flex: 1; min-height: 0; display: flex; align-items: center; justify-content: center; background: var(--neutral-bg); padding: 16px; height: min(66vh, 680px); }
+.g-stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border-radius: 4px; box-shadow: var(--shadow); }
+.g-foot { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 14px; border-top: 1px solid var(--line); }
+.g-foot .btn { min-height: 38px; padding: 0 14px; }
+.g-cap { display: grid; gap: 2px; text-align: center; min-width: 0; }
+.g-cap strong { font-size: 16px; }
+.g-cap span { color: var(--muted); font-size: 14px; }
+.g-thumbs { display: flex; gap: 8px; padding: 0 14px 14px; overflow-x: auto; }
+.g-thumbs button {
+  flex: none; width: 72px; height: 52px; padding: 0; overflow: hidden; cursor: pointer;
+  background: var(--neutral-bg); border: 2px solid var(--line); border-radius: 3px;
+}
+.g-thumbs button[aria-current="true"] { border-color: var(--accent); }
+.g-thumbs img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+@media (max-width: 560px) {
+  .g-stage { height: 58vh; padding: 10px; }
+  .g-foot { grid-template-columns: 1fr 1fr; }
+  .g-cap { grid-column: 1 / -1; grid-row: 1; }
+}
+
+/* beyond SAP */
+.beyond { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+@media (max-width: 860px) { .beyond { grid-template-columns: minmax(0, 1fr); } }
+.beyond-intro { display: grid; gap: 18px; }
+.note {
+  border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; color: var(--muted); font-size: 15px;
+}
+.build-list { list-style: none; margin: 0; padding: 0; display: grid; }
+.build-list li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 14px; padding: 18px 0; border-top: 1px solid var(--line); }
+.build-list li:last-child { border-bottom: 1px solid var(--line); }
+.build-list .arrow { margin-top: 8px; }
+.build-list h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.build-list p { color: var(--muted); font-size: 15px; }
+
+/* process */
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0; counter-reset: step; }
+@media (max-width: 960px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; } }
+@media (max-width: 560px) { .steps { grid-template-columns: minmax(0, 1fr); } }
+.steps li { counter-increment: step; padding: 20px 20px 24px 0; border-top: 2px solid var(--ink); display: grid; gap: 8px; align-content: start; }
+.steps li::before {
+  content: "Step " counter(step);
+  font-family: var(--font-mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-ink);
+}
+.steps h3 { font-size: 1.1rem; }
+.steps p { color: var(--muted); font-size: 15px; }
+
+/* experience */
+.xp-row { grid-template-columns: 170px minmax(0, 1fr) 110px; }
+.xp-row .period { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.xp-row .city { font-size: 14px; color: var(--muted); text-align: right; padding-top: 2px; }
+@media (max-width: 680px) {
+  .xp-row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .xp-row .city { text-align: left; }
+  .xp-row .mx-main { grid-column: auto; }
+}
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; margin-top: 32px; }
+@media (max-width: 680px) { .facts { grid-template-columns: minmax(0, 1fr); } }
+.facts h3 { font-size: 1rem; margin-bottom: 10px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.tag { font-size: 13px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 3px; background: var(--paper); }
+
+/* contact */
+.contact { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 80px); align-items: start; }
+@media (max-width: 860px) { .contact { grid-template-columns: minmax(0, 1fr); } }
+.contact h2 { font-size: clamp(2.2rem, 4.6vw, 3.4rem); }
+.contact-copy { display: grid; gap: 20px; }
+.send-list { margin: 0; padding-left: 20px; color: var(--muted); font-size: 15px; display: grid; gap: 6px; }
+.card-contact { background: var(--paper); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.c-row { display: grid; grid-template-columns: 100px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 16px 18px; border-top: 1px solid var(--line); }
+.c-row:first-child { border-top: 0; }
+.c-row .bp-label { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: .08em; }
+.c-val { font-size: 16px; font-weight: 500; overflow-wrap: anywhere; user-select: all; }
+.copy-btn {
+  font: 500 13px var(--font-body); color: var(--ink);
+  background: var(--field); border: 1px solid var(--line); border-radius: 3px;
+  padding: 6px 12px; cursor: pointer; min-width: 72px;
+}
+.copy-btn:hover { border-color: var(--accent); }
+.c-actions { display: flex; flex-wrap: wrap; gap: 10px; padding: 16px 18px; background: var(--field); border-top: 1px solid var(--line); }
+@media (max-width: 460px) {
+  .c-row { grid-template-columns: minmax(0, 1fr) auto; }
+  .c-row .bp-label { grid-column: 1 / -1; }
+}
+
+footer { padding-block: 28px; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Hasan Hameed, back to top">
+      <span class="mono-mark" aria-hidden="true">HH</span>
+      <span>
+        <span class="brand-name">Hasan Hameed</span><br>
+        <span class="brand-sub">SAP Business One Consultant</span>
+      </span>
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#services">Services</a>
+      <a href="#addons">Add-ons</a>
+      <a href="#build">Apps &amp; web</a>
+      <a href="#experience">Experience</a>
+      <a class="nav-cta" href="#contact"><span class="arrow" aria-hidden="true"></span>Hire me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Freelance · Remote · Certified SAP B1</p>
+        <h1>Make SAP Business One <em>fit your business.</em></h1>
+        <p class="lede">I'm a certified techno-functional consultant with 11+ years on SAP B1 across the UAE, Saudi Arabia, Bhutan and Pakistan. I implement SAP B1, and I build the approvals, portals and integrations your team keeps asking for. I work remotely with clients anywhere.</p>
+        <div class="cta-row">
+          <a class="btn btn--sap" href="https://wa.me/971506709785" target="_blank" rel="noopener">Message me on WhatsApp</a>
+          <a class="btn btn--ghost" href="#addons">See add-ons</a>
+        </div>
+      </div>
+
+      <aside class="bp" aria-label="Consultant profile">
+        <div class="bp-title"><span>Business Partner Master Data</span><span>Consultant</span></div>
+        <div class="bp-tabs" aria-hidden="true">
+          <span class="bp-tab is-on">General</span>
+          <span class="bp-tab">Experience</span>
+          <span class="bp-tab">Sectors</span>
+        </div>
+        <div class="bp-body">
+          <div class="bp-row"><span class="bp-label">Name</span><span class="fld">Hasan Hameed</span></div>
+          <div class="bp-row"><span class="bp-label">Role</span><span class="fld">Techno-Functional Consultant</span></div>
+          <div class="bp-row"><span class="bp-label">Certification</span><span class="fld"><span class="check">✓</span> SAP Business One</span></div>
+          <div class="bp-row"><span class="bp-label">Experience</span><a class="fld" href="#experience"><span class="arrow" aria-hidden="true"></span>11+ years, since 2015</a></div>
+          <div class="bp-row"><span class="bp-label">Countries</span><span class="fld">UAE · KSA · Bhutan · Pakistan</span></div>
+          <div class="bp-row"><span class="bp-label">Sectors</span><span class="fld">Packaging · Trading · Manufacturing · Fit-out · Banking</span></div>
+          <div class="bp-row"><span class="bp-label">Databases</span><span class="fld">SAP HANA · SQL Server</span></div>
+          <div class="bp-row"><span class="bp-label">Time zone</span><span class="fld">Gulf Standard Time, UTC+4</span></div>
+          <div class="bp-row"><span class="bp-label">Status</span><span class="fld"><span class="dot" aria-hidden="true"></span>Taking remote projects</span></div>
+        </div>
+        <div class="bp-foot">
+          <a class="btn btn--sap" href="#contact">Contact</a>
+          <a class="btn btn--ghost" href="#services">Services</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="band band--paper" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2>What I can do for your SAP B1</h2>
+        <p class="lede">I understand the accounting and the business process, and I can also write the query, the layout or the add-on. You deal with one person from requirement to go-live.</p>
+      </div>
+      <div class="svc-grid">
+        <article class="svc">
+          <p class="eyebrow">Full cycle</p>
+          <h3>Implementation &amp; go-live</h3>
+          <p>Requirements, configuration, data migration, user training and go-live support. Delivered for packaging, trading, manufacturing, fit-out and banking businesses.</p>
+        </article>
+        <article class="svc">
+          <p class="eyebrow">UAE · KSA</p>
+          <h3>E-Invoicing</h3>
+          <p>KSA (ZATCA) e-invoicing for multiple companies, and UAE e-invoicing on Peppol PINT AE: field mapping, UDFs, invoice layouts and the API to your e-invoicing provider.</p>
+        </article>
+        <article class="svc">
+          <p class="eyebrow">Extend SAP B1</p>
+          <h3>Add-ons &amp; web portals</h3>
+          <p>Approval portals, purchase requests, quality control and finance portals. Approvers and staff work from a browser or straight from email, without an SAP B1 login.</p>
+        </article>
+        <article class="svc">
+          <p class="eyebrow">Connect</p>
+          <h3>Integrations</h3>
+          <p>WhatsApp (Meta Cloud API), Tally, Excel, weighing scales and QR codes, connected to SAP B1 through the Service Layer and JSON APIs.</p>
+        </article>
+        <article class="svc">
+          <p class="eyebrow">Report</p>
+          <h3>Reports &amp; dashboards</h3>
+          <p>Crystal Reports print layouts, Power BI dashboards, and HANA or SQL queries your managers can run on their own.</p>
+        </article>
+        <article class="svc">
+          <p class="eyebrow">Support</p>
+          <h3>Support &amp; controls</h3>
+          <p>Remote support, user authorizations, approval procedures, and business rules enforced through <code>SBO_SP_TransactionNotification</code>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="addons">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Built for SAP Business One</p>
+        <h2>Add-ons Developed</h2>
+        <p class="lede">Portals, approvals and integrations I've built for SAP B1 companies. Client names are kept private, and screens use sample data.</p>
+      </div>
+
+      <article class="feature">
+        <div class="feature-copy">
+          <span class="pill pill--built">Built and tested</span>
+          <h3>SAP B1 Finance Portal</h3>
+          <div class="license-note">
+            <strong>No SAP B1 licenses for your finance team? No issue.</strong>
+            <p>We provide a customized finance portal that is integrated with SAP B1 and works as a replica of the SAP B1 Financials license. Your team works in the browser, and every document lands in SAP B1.</p>
+          </div>
+          <ul class="ticks">
+            <li><span class="arrow" aria-hidden="true"></span><span>Journal entries, incoming and outgoing payments, and deposits, posted straight to SAP B1</span></li>
+            <li><span class="arrow" aria-hidden="true"></span><span>Trial balance, P&amp;L, balance sheet, general ledger, BP statement, aging and your saved queries</span></li>
+            <li><span class="arrow" aria-hidden="true"></span><span>Portal users with roles (admin, accountant, viewer) and an audit log of who posted what</span></li>
+          </ul>
+          <button class="btn btn--sap" type="button" data-gallery="finance" id="view-finance">Click here to view <span class="btn-count">4 screens</span></button>
+        </div>
+        <button class="feature-media" type="button" data-gallery="finance" aria-label="View finance portal screens">
+          <img src="shots/fin-1.png" alt="Finance portal dashboard showing cash, receivables, payables and latest documents" width="1920" height="1200">
+        </button>
+      </article>
+
+      <article class="feature feature--phone">
+        <div class="feature-copy">
+          <span class="pill pill--wip">Add-on built · mobile app in development</span>
+          <h3>Overtime Sheet &amp; Site Attendance App</h3>
+          <p class="lede">Workers mark time-in and time-out on their own Android or iPhone, even at sites with no network. Overtime is calculated per project and flows into the SAP B1 overtime sheet.</p>
+          <ul class="ticks">
+            <li><span class="arrow" aria-hidden="true"></span><span>Works offline and syncs when the network comes back</span></li>
+            <li><span class="arrow" aria-hidden="true"></span><span>Selfie and GPS with every punch, so nobody marks attendance for someone else</span></li>
+            <li><span class="arrow" aria-hidden="true"></span><span>QR scan mode for foremen, for workers who don't have a smartphone</span></li>
+          </ul>
+          <button class="btn btn--sap" type="button" data-gallery="overtime" id="view-overtime">Click here to view <span class="btn-count">7 screens</span></button>
+        </div>
+        <button class="feature-media phones" type="button" data-gallery="overtime" aria-label="View attendance app screens">
+          <img src="shots/ot-2.png" alt="App screen with a large Time In button and the worker's site from GPS" width="780" height="1688">
+          <img src="shots/ot-5.png" alt="Day summary screen showing worked hours and 1:30 overtime" width="780" height="1688">
+        </button>
+      </article>
+
+      <p class="more-head">More add-ons</p>
+      <div class="addon-grid">
+        <article class="addon">
+          <div class="addon-top"><h3>Invoice Approval by Email</h3><span class="pill pill--live">Live</span></div>
+          <p>Approvers get the document with its attachments by email and approve or reject from there. No VPN or SAP login needed. Follows each project's approval hierarchy, up to four levels.</p>
+        </article>
+        <article class="addon">
+          <div class="addon-top"><h3>Purchase Request Portal</h3><span class="pill pill--live">Live</span></div>
+          <p>An SAP B1-style purchase request form in the browser that posts straight to the live company database.</p>
+        </article>
+        <article class="addon">
+          <div class="addon-top"><h3>Quality Control Add-on</h3><span class="pill pill--built">Built</span></div>
+          <p>Quality checks recorded in an add-on connected to SAP B1.</p>
+        </article>
+        <article class="addon">
+          <div class="addon-top"><h3>WhatsApp Integration</h3><span class="pill pill--built">Built</span></div>
+          <p>Sends SAP B1 data to users on WhatsApp. Automatic A/R invoice PDFs to customers, with a delivery-status portal, are in progress for a client.</p>
+        </article>
+        <article class="addon">
+          <div class="addon-top"><h3>UAE E-Invoicing API</h3><span class="pill pill--wip">In progress</span></div>
+          <p>Invoice data leaves SAP B1 as JSON for the e-invoicing middleware, with the status coming back into SAP. Built in-house instead of buying a costly connector.</p>
+        </article>
+        <article class="addon">
+          <div class="addon-top"><h3>Weighing Scale Integration</h3><span class="pill pill--wip">In progress</span></div>
+          <p>Gross, tare and net weight per roll read from the scale over RS232, with a batch sticker for each roll and a feed into Receipt from Production.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper" id="build">
+    <div class="wrap beyond">
+      <div class="beyond-intro">
+        <p class="eyebrow">Beyond SAP B1</p>
+        <h2>Apps and websites, built fast</h2>
+        <p class="lede">I combine business process knowledge with AI-assisted development. That lets me turn an idea into working software in days or weeks, so you pay for results instead of long development hours.</p>
+        <p class="note">This website was built the same way.</p>
+        <div class="cta-row">
+          <a class="btn btn--sap" href="#contact">Discuss your idea</a>
+        </div>
+      </div>
+      <ul class="build-list">
+        <li>
+          <span class="arrow" aria-hidden="true"></span>
+          <div><h3>Mobile apps for Android &amp; iOS</h3><p>Field attendance with QR codes, customer apps for your business, and utility apps. A recent personal project is a phone remote for a smart TV with voice control.</p></div>
+        </li>
+        <li>
+          <span class="arrow" aria-hidden="true"></span>
+          <div><h3>Company websites &amp; landing pages</h3><p>Fast, mobile-friendly sites that explain what you do and bring in enquiries.</p></div>
+        </li>
+        <li>
+          <span class="arrow" aria-hidden="true"></span>
+          <div><h3>Customer &amp; vendor portals</h3><p>Let customers and suppliers check orders, statements and invoices that come straight from SAP B1.</p></div>
+        </li>
+        <li>
+          <span class="arrow" aria-hidden="true"></span>
+          <div><h3>Dashboards &amp; internal tools</h3><p>Live numbers for management, approval screens, data entry forms and trackers.</p></div>
+        </li>
+        <li>
+          <span class="arrow" aria-hidden="true"></span>
+          <div><h3>Automation</h3><p>Scheduled WhatsApp and email alerts, approval reminders and reports that send themselves.</p></div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How we work</p>
+        <h2>From first call to go-live</h2>
+        <p class="lede">Everything happens remotely: calls, screen sharing, and access to your server over VPN or remote desktop.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Call</h3><p>We talk through your process and what isn't working. You show me the screens.</p></li>
+        <li><h3>Scope</h3><p>You get a written scope with features, timeline and price before work starts.</p></li>
+        <li><h3>Build</h3><p>I build and test on a copy of your company database, never on live data.</p></li>
+        <li><h3>Test &amp; train</h3><p>Your users test it, I fix what they find, and I train them.</p></li>
+        <li><h3>Go-live</h3><p>We switch to live data together, and I stay on for support.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band band--paper" id="experience">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Experience</p>
+        <h2>11+ years in four countries</h2>
+      </div>
+      <div class="matrix" role="table" aria-label="Work history">
+        <div class="mx-row xp-row mx-head" role="row">
+          <span role="columnheader">Period</span><span role="columnheader">Role</span><span role="columnheader" style="text-align:right">City</span>
+        </div>
+        <div class="mx-row xp-row" role="row">
+          <span class="period" role="cell">Dec 2023 – Present</span>
+          <div class="mx-main" role="cell"><strong>SAP B1 Implementation Manager</strong><span>Arki Group Design LLC</span></div>
+          <span class="city" role="cell">Dubai</span>
+        </div>
+        <div class="mx-row xp-row" role="row">
+          <span class="period" role="cell">Jun 2022 – Dec 2023</span>
+          <div class="mx-main" role="cell"><strong>SAP B1 Senior Consultant, Team Lead</strong><span>Zealous Systems Pvt Ltd</span></div>
+          <span class="city" role="cell">Thimphu</span>
+        </div>
+        <div class="mx-row xp-row" role="row">
+          <span class="period" role="cell">Dec 2020 – Jun 2022</span>
+          <div class="mx-main" role="cell"><strong>SAP B1 Senior Consultant</strong><span>Abacus Cambridge Partner</span></div>
+          <span class="city" role="cell">Riyadh</span>
+        </div>
+        <div class="mx-row xp-row" role="row">
+          <span class="period" role="cell">Jun 2019 – Nov 2020</span>
+          <div class="mx-main" role="cell"><strong>Deputy Manager MIS</strong><span>Toyo Packaging Pvt Ltd</span></div>
+          <span class="city" role="cell">Karachi</span>
+        </div>
+        <div class="mx-row xp-row" role="row">
+          <span class="period" role="cell">Nov 2016 – May 2019</span>
+          <div class="mx-main" role="cell"><strong>Associate Manager SAP</strong><span>Crown Group of Companies</span></div>
+          <span class="city" role="cell">Karachi</span>
+        </div>
+        <div class="mx-row xp-row" role="row">
+          <span class="period" role="cell">Jan 2015 – Oct 2016</span>
+          <div class="mx-main" role="cell"><strong>System Analyst</strong><span>Associate Textile Consultant</span></div>
+          <span class="city" role="cell">Karachi</span>
+        </div>
+      </div>
+
+      <div class="facts">
+        <div>
+          <h3>Education &amp; certification</h3>
+          <div class="tags">
+            <span class="tag">SAP Business One certified</span>
+            <span class="tag">Master of Project Management, 2020</span>
+            <span class="tag">Bachelors in ERP, 2015</span>
+          </div>
+        </div>
+        <div>
+          <h3>Toolkit</h3>
+          <div class="tags">
+            <span class="tag">SAP Business One</span>
+            <span class="tag">SAP HANA Studio</span>
+            <span class="tag">SQL</span>
+            <span class="tag">Service Layer API</span>
+            <span class="tag">Crystal Reports</span>
+            <span class="tag">Power BI</span>
+            <span class="tag">Python</span>
+            <span class="tag">WhatsApp Cloud API</span>
+            <span class="tag">Peppol PINT AE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="contact">
+    <div class="wrap contact">
+      <div class="contact-copy">
+        <p class="eyebrow">Start a project</p>
+        <h2>Tell me what SAP B1 should do for you.</h2>
+        <p class="lede">A short message is enough to start. If you can, include:</p>
+        <ul class="send-list">
+          <li>Your SAP B1 version, and whether it runs on HANA or SQL Server</li>
+          <li>What you want to add, fix or connect</li>
+          <li>When you need it live</li>
+        </ul>
+      </div>
+      <div class="card-contact">
+        <div class="c-row">
+          <span class="bp-label">WhatsApp</span>
+          <span class="c-val" id="phone">+971 50 670 9785</span>
+          <button class="copy-btn" type="button" data-copy="phone" id="copy-phone">Copy</button>
+        </div>
+        <div class="c-row">
+          <span class="bp-label">Email</span>
+          <span class="c-val" id="email">hasan.hameed25@hotmail.com</span>
+          <button class="copy-btn" type="button" data-copy="email" id="copy-email">Copy</button>
+        </div>
+        <div class="c-row">
+          <span class="bp-label">Based in</span>
+          <span class="c-val">Sharjah, UAE · UTC+4</span>
+          <span></span>
+        </div>
+        <div class="c-actions">
+          <a class="btn btn--sap" href="https://wa.me/971506709785" target="_blank" rel="noopener">Open WhatsApp chat</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Hasan Hameed</span>
+    <span>SAP Business One consulting, add-ons and integrations · Remote</span>
+  </div>
+</footer>
+
+<dialog class="gallery" id="gallery" aria-labelledby="g-title">
+  <div class="g-head"><span id="g-title">Screens</span><span id="g-count"></span><button class="g-close" type="button" id="g-close">Close</button></div>
+  <div class="g-stage"><img id="g-img" alt=""></div>
+  <div class="g-foot">
+    <button class="btn btn--ghost" type="button" id="g-prev">Previous</button>
+    <div class="g-cap"><strong id="g-cap-title"></strong><span id="g-cap-text"></span></div>
+    <button class="btn btn--sap" type="button" id="g-next">Next</button>
+  </div>
+  <div class="g-thumbs" id="g-thumbs"></div>
+</dialog>
+
+<script>
+  document.querySelectorAll('[data-copy]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var text = el.textContent.trim();
+      var done = function (label) {
+        btn.textContent = label;
+        setTimeout(function () { btn.textContent = 'Copy'; }, 1800);
+      };
+      var selectIt = function () {
+        try {
+          var range = document.createRange();
+          range.selectNodeContents(el);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          done('Selected');
+        } catch (e) { /* nothing more to do */ }
+      };
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done('Copied'); }, selectIt);
+        } else { selectIt(); }
+      } catch (e) { selectIt(); }
+    });
+  });
+  var galleries = {
+    finance: { title: 'SAP B1 Finance Portal', shots: [
+      ['shots/fin-1.png', 'Dashboard', 'Cash, receivables, payables and profit, live from SAP B1'],
+      ['shots/fin-2.png', 'Journal Entry', 'Create a journal entry and post it straight to SAP B1'],
+      ['shots/fin-3.png', 'Incoming Payment', 'Settle invoices and credit memos by transfer, cheque or cash'],
+      ['shots/fin-4.png', 'Trial Balance', 'Financial reports with filters, CSV export and print']
+    ]},
+    overtime: { title: 'Site Attendance & Overtime App', shots: [
+      ['shots/ot-1.png', 'Login', 'Employee ID and PIN; the phone is locked to one worker'],
+      ['shots/ot-2.png', 'Time In', 'Works offline; GPS confirms the worker is inside the site'],
+      ['shots/ot-3.png', 'Selfie + GPS', 'A photo and location are saved with every punch'],
+      ['shots/ot-4.png', 'On duty', 'Live hours, with overtime counted after the shift'],
+      ['shots/ot-5.png', 'Day summary', 'Worked hours and overtime, sent for supervisor approval'],
+      ['shots/ot-6.png', 'History & sync', 'Saved on the phone and synced when network returns'],
+      ['shots/ot-7.png', 'Foreman QR scan', 'The foreman marks workers who have no smartphone']
+    ]}
+  };
+  var dlg = document.getElementById('gallery');
+  var gImg = document.getElementById('g-img');
+  var gThumbs = document.getElementById('g-thumbs');
+  var current = null, idx = 0;
+  function show(i) {
+    var shots = galleries[current].shots;
+    idx = (i + shots.length) % shots.length;
+    var s = shots[idx];
+    gImg.src = s[0];
+    gImg.alt = galleries[current].title + ': ' + s[1];
+    document.getElementById('g-cap-title').textContent = s[1];
+    document.getElementById('g-cap-text').textContent = s[2];
+    document.getElementById('g-count').textContent = (idx + 1) + ' / ' + shots.length;
+    Array.prototype.forEach.call(gThumbs.children, function (b, n) { b.setAttribute('aria-current', n === idx ? 'true' : 'false'); });
+  }
+  function openGallery(key) {
+    current = key;
+    document.getElementById('g-title').textContent = galleries[key].title;
+    gThumbs.innerHTML = '';
+    galleries[key].shots.forEach(function (s, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', s[1]);
+      var im = document.createElement('img');
+      im.src = s[0]; im.alt = ''; im.loading = 'lazy';
+      b.appendChild(im);
+      b.addEventListener('click', function () { show(n); });
+      gThumbs.appendChild(b);
+    });
+    show(0);
+    if (typeof dlg.showModal === 'function') { dlg.showModal(); } else { dlg.setAttribute('open', ''); }
+  }
+  function closeGallery() { if (dlg.close) { dlg.close(); } else { dlg.removeAttribute('open'); } }
+  document.querySelectorAll('[data-gallery]').forEach(function (el) {
+    el.addEventListener('click', function () { openGallery(el.getAttribute('data-gallery')); });
+  });
+  document.getElementById('g-prev').addEventListener('click', function () { show(idx - 1); });
+  document.getElementById('g-next').addEventListener('click', function () { show(idx + 1); });
+  document.getElementById('g-close').addEventListener('click', closeGallery);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) closeGallery(); });
+  dlg.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowRight') show(idx + 1);
+    if (e.key === 'ArrowLeft') show(idx - 1);
+  });
+</script>
+
+</body>
+</html>
